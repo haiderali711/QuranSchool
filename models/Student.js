@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const UserSchema = mongoose.Schema({
+const StudentSchema = mongoose.Schema({
 	name: {
 		type: String,
 		required: true,
@@ -12,20 +12,20 @@ const UserSchema = mongoose.Schema({
 		min: 6,
 		max: 255
 	},
-	personalnumber: {
-		type: Integer,
+	personalNumber: {
+		type: String,
 		required: true,
 		min: 10,
 		max: 12
 	},
     phoneNumber: {
-		type: Integer,
+		type: String,
 		required: true,
 		min: 10,
 		max: 15
 	},
     parentNumber: {
-		type: Integer,
+		type: String,
 		required: true,
 		min: 10,
 		max: 15
@@ -36,4 +36,4 @@ const UserSchema = mongoose.Schema({
 	}
 });
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('Student', StudentSchema);

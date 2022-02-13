@@ -11,13 +11,13 @@ app.use(bodyParser.json())
 
 // // Import Routes
 // const teacherRoute = require('./routes/teachers');
-// const studentRoute = require('./routes/students');
+const studentRoute = require('./routes/student');
 
 // app.use('/api/teachers', teacherRoute);
-// app.use('/api/user', studentRoute);
-// app.use("/api/*", function (req, res) {
-//     res.status(404).json({ message: "Endpoint Not Found!!!" });
-//   });
+app.use('/api/student', studentRoute);
+app.use("/api/*", function (req, res) {
+    res.status(404).json({ message: "Endpoint Not Found!!!" });
+  });
 
 //Routes
 app.get('/', (req, res) => {
@@ -37,7 +37,7 @@ app.get('/', (req, res) => {
 
 
 
-mongoose.connect("mongodb+srv://school:<quran123456789>@cluster0.lbg1u.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", { useUnifiedTopology: true, useNewUrlParser: true  }, () => {
+mongoose.connect("mongodb+srv://school:quran123456789@cluster0.lbg1u.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", { useUnifiedTopology: true, useNewUrlParser: true  }, () => {
 	console.log("Connected to DB")
 });
 
