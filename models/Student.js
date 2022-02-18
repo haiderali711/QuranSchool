@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const uniqueValidator = require('mongoose-unique-validator')
+
 const StudentSchema = mongoose.Schema({
 	name: {
 		type: String,
@@ -16,7 +18,8 @@ const StudentSchema = mongoose.Schema({
 		type: String,
 		required: true,
 		min: 10,
-		max: 12
+		max: 12,
+		unique: true
 	},
     phoneNumber: {
 		type: String,
@@ -35,5 +38,7 @@ const StudentSchema = mongoose.Schema({
 		default: Date.now
 	}
 });
+
+StudentSchema.plugin(uniqueValidator)
 
 module.exports = mongoose.model('Student', StudentSchema);
