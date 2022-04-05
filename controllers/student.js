@@ -1,17 +1,33 @@
 const Student = require("../models/Student");
 
 // Create a new user
-const createStudent = (req, res, next) => {
+const createStudent = async (req, res) => {
     var alreadyExisting = false;
     let student = new Student(req.body);
-    student
+    await student
         .save((err, data) => {
             if (data) {
                 res.status(201).json(data);
-            } else {
-                if (err.body.name === "ValidationError") alreadyExisting = true;
             }
-        }).then(r => {})
+
+            res.status(400).json({message: 'Student already exists'})
+        })
+};
+
+const findStudentWithPersonalNumber = (req, res) => {
+    let personalNumber = req.params.personalNumber;
+
+    Student.findOne({personalNumber: personalNumber})
+        .then(result => {
+            if (result !== null)
+                res.send(result);
+            else
+                res.status(404).send({Message: "No student with this Personal Number is registered."})
+        })
+        .catch (err => {
+            console.log("error", err )
+        });
+
 };
 
 // con st createNewComment = (req, res) => {
@@ -29,4 +45,5 @@ const createStudent = (req, res, next) => {
 
 module.exports = {
     createStudent,
+    findStudentWithPersonalNumber
 };

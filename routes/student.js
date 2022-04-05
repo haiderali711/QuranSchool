@@ -5,7 +5,7 @@ const StudentController = require("../controllers/student");
 
 router.post("/", StudentController.createStudent);
 
-// router.get("/:id", StudentController.findStudentbyID);
+router.get("/pn/:personalNumber", StudentController.findStudentWithPersonalNumber);
 
 // router.patch("/:id", StudentController.updateWithId);
 
