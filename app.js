@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 require('dotenv/config');
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 app.use(cors())
 app.use(bodyParser.json())
@@ -46,4 +47,4 @@ mongoose.connect("mongodb+srv://school:quran123456789@cluster0.lbg1u.mongodb.net
 	console.log("Connected to DB")
 });
 
-app.listen(3000);
+app.listen(PORT);
