@@ -7,8 +7,10 @@ router.post("/", StudentController.createStudent);
 
 router.get("/pn/:personalNumber", StudentController.findStudentWithPersonalNumber);
 
-// router.patch("/:id", StudentController.updateWithId);
+router.get("/:id", StudentController.findStudentWithId);
 
-// router.delete("/:id", StudentController.deleteUserWithId);
+router.patch("/:id", StudentController.updateStudentWithId);
+
+router.delete("/:id", StudentController.deleteStudentWithId);
 
 module.exports = router;

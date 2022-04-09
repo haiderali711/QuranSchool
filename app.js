@@ -10,13 +10,14 @@ app.use(cors())
 app.use(bodyParser.json())
 
 // // Import Routes
-// const teacherRoute = require('./routes/teachers');
 const studentRoute = require('./routes/student');
+const teacherRoute = require('./routes/teacher');
+
 const {func} = require("joi");
 
-// app.use('/api/teachers', teacherRoute);
+app.use('/api/teacher', teacherRoute);
 app.use('/api/student', studentRoute);
-app.use('/api/*', function (req, res) {
+app.use("/api/*", function (req, res) {
     res.status(404).json({ message: "Endpoint Not Found!!!" });
 });
 app.use('/api/', (req, res) => {
