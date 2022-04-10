@@ -7,6 +7,11 @@ require('dotenv/config');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+mongoose.connect("mongodb+srv://school:quran123456789@cluster0.lbg1u.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", () => {
+    console.log("Connected to DB")
+});
+
+
 app.use(cors())
 app.use(bodyParser.json())
 
@@ -41,10 +46,5 @@ app.get('/', (req, res) => {
 //   client.close();
 // });
 
-
-
-mongoose.connect("mongodb+srv://school:quran123456789@cluster0.lbg1u.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", () => {
-	console.log("Connected to DB")
-});
 
 app.listen(PORT);
