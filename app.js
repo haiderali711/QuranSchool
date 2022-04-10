@@ -43,7 +43,7 @@ app.get('/', (req, res) => {
 
 
 
-mongoose.connect("mongodb+srv://school:quran123456789@cluster0.lbg1u.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", { useUnifiedTopology: true, useNewUrlParser: true  }, () => {
+mongoose.connect("mongodb+srv://school:quran123456789@cluster0.lbg1u.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", () => {
 	console.log("Connected to DB")
 });
 
