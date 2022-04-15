@@ -1,7 +1,5 @@
 # QuranSchool
 
-##Get started with Api
-npm install
+##This Project contains just the Backend
 
-npm start
 
