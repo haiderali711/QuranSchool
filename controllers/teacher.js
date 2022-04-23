@@ -1,4 +1,5 @@
 const Teacher = require("../models/Teacher");
+const Student = require("../models/Student");
 
 const createTeacher = async (req, res) => {
     let teacher = new Teacher(req.body);
@@ -12,6 +13,23 @@ const createTeacher = async (req, res) => {
             res.status(400).json({message: 'Teacher already exists'})
         })
 };
+
+const authenticateTeacher = (req,res) => {
+    let username = req.params.username;
+    let password = req.params.password;
+
+    Teacher.findOne({username: username , password:password})
+        .then(result => {
+            if (result !== null)
+                res.send(result);
+            else
+                res.status(404).send({Message: "Authentication Failed."})
+        })
+        .catch (err => {
+            console.log("error", err )
+        });
+
+}
 
 const findTeacherWithId = (req , res) => {
     let id = req.params.id;
@@ -81,5 +99,6 @@ module.exports = {
     findTeacherWithId,
     updateTeacherWithId,
     addStudentToTeacher,
-    removeStudentFromTeacher
+    removeStudentFromTeacher,
+    authenticateTeacher
 };

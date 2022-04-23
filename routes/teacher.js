@@ -7,6 +7,8 @@ router.post("/", TeacherController.createTeacher);
 
 router.get("/:id", TeacherController.findTeacherWithId);
 
+router.get("/:username/:password", TeacherController.authenticateTeacher);
+
 router.patch("/:id", TeacherController.updateTeacherWithId);
 
 router.patch("/:tid/studentAdd/:sid",TeacherController.addStudentToTeacher);
