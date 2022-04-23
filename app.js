@@ -18,11 +18,14 @@ app.use(bodyParser.json())
 // // Import Routes
 const studentRoute = require('./routes/student');
 const teacherRoute = require('./routes/teacher');
+const paymentTermRoute = require('./routes/payments_record');
+
 
 const {func} = require("joi");
 
 app.use('/api/teacher', teacherRoute);
 app.use('/api/student', studentRoute);
+app.use('/api/paymentTerm',paymentTermRoute)
 app.use("/api/*", function (req, res) {
     res.status(404).json({ message: "Endpoint Not Found!!!" });
 });
